@@ -18,7 +18,7 @@ filetype on
 "filetype indent on
 
 " lines for history
-set history=1000
+set history=10000
 
 "Which color scheme
 colorscheme koehler
@@ -30,9 +30,10 @@ set ignorecase
 set number
 set cursorline
 set cursorcolumn
-highlight CursorLine guibg=lightblue ctermbg=blue
-highlight CursorColumn guibg=lightblue ctermbg=blue
+highlight CursorLine guibg=lightblue ctermbg=brown
+highlight CursorColumn guibg=lightblue ctermbg=brown
 
+"format with the par external program
 set formatprg=par\ -w70j
 
 " highlight search
@@ -80,13 +81,12 @@ set foldmethod=manual
 "to fold parts of the code
 set nofoldenable
 
-"set textwidth=78
-
 " cursor position
 set ruler
 
 " status line
-set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
+"set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\[ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 "display name of file
 set modeline
@@ -122,7 +122,6 @@ map vv <C-V>
 " map sav to save the file in insert mode
 imap <F10> <Esc>:w<CR><Esc>
 
-" map for 
 
 " use dictionary for word completion
 set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
@@ -183,3 +182,9 @@ nnoremap J mzJ`z
 "control the position of the new splits
 set splitbelow
 set splitright
+
+"auto source the .vimrc whenever it is modified
+if has("autocmd")
+ autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
