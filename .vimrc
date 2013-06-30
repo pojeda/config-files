@@ -153,11 +153,12 @@ command! Open   :! (file="%"; pdflatex "$file" $>/dev/null && zathura "${file/.t
 "Reformat automatically the paragraphs
 set tw=70
 set wm=0
-""set linebreak
-""set fo+=t
-""set ai 
 
-set fo=at
+""set linebreak ""set fo+=t ""set ai 
+
+"autoformat the text useful for latex but annoying for any other
+"things 
+"set fo=at
 
 "set spell
 "Use the the z= command to find alternate spellings underneath your cursor.
@@ -166,3 +167,19 @@ set spell
 
 "Keep 5 lines below and above the cursor 
 set scrolloff=9999
+
+"to enable backspace 
+set backspace=indent,eol,start
+
+"autocomplete the name of files
+set wildmode=longest,list
+
+"don't show vim starting message
+set shortmess+=I
+
+"If you want to keep the cursor in place when you join lines with
+nnoremap J mzJ`z
+
+"control the position of the new splits
+set splitbelow
+set splitright
