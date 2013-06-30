@@ -163,3 +163,6 @@ set fo=at
 "Use the the z= command to find alternate spellings underneath your cursor.
 set spelllang=en_us
 set spell
+
+"Keep 5 lines below and above the cursor 
+set scrolloff=9999
