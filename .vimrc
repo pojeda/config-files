@@ -184,7 +184,7 @@ set splitbelow
 set splitright
 
 "auto source the .vimrc whenever it is modified
-if has("autocmd")
+if has("autocmd!")
  autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
