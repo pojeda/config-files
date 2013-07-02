@@ -143,6 +143,16 @@ set term=screen-256color
 "For Tmux Colors
 set t_Co=256
 
+"For command line editing
+"set cedit
+
+"split vertical to the right
+"set splitright
+
+"to search with space instead of slash
+map <space> /
+map <c-space> ?
+
 "Recompile a tex file with pdflatex
 command! Reload :! (pdflatex % &>/dev/null) &
 au BufWritePost *.tex silent Reload
@@ -188,3 +198,12 @@ if has("autocmd!")
  autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
+"This part adds a header to a fortran file when it is created
+"modification to work with c files is straightforward
+autocmd bufnewfile *.f so /home/pedro/.headerfortran
+autocmd bufnewfile *.f exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
+autocmd bufnewfile *.f exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+autocmd bufnewfile *.f exe "1," . 13 . "g/Created By :.*/s//Created By: " .$USER
+autocmd Bufwritepre,filewritepre *.f execute "normal ma"
+autocmd Bufwritepre,filewritepre *.f exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+autocmd bufwritepost,filewritepost *.f execute "normal `a"
