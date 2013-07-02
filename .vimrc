@@ -200,7 +200,7 @@ endif
 
 "This part adds a header to a fortran file when it is created
 "modification to work with c files is straightforward
-autocmd bufnewfile *.f so /home/pedro/.headerfortran
+autocmd bufnewfile *.f so $HOME/.headerfortran
 autocmd bufnewfile *.f exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
 autocmd bufnewfile *.f exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
 autocmd bufnewfile *.f exe "1," . 13 . "g/Created By :.*/s//Created By: " .$USER
