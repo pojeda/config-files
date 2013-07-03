@@ -207,3 +207,12 @@ autocmd bufnewfile *.f exe "1," . 13 . "g/Created By :.*/s//Created By: " .$USER
 autocmd Bufwritepre,filewritepre *.f execute "normal ma"
 autocmd Bufwritepre,filewritepre *.f exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
 autocmd bufwritepost,filewritepost *.f execute "normal `a"
+
+"update vimdiff automatically without diffupdate
+if &diff
+  augroup saveupdatediff
+    autocmd!
+    autocmd BufWritePost * diffupdate
+  augroup END
+endif
+
