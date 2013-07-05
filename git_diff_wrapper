@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+vimdiff "$2" "$5"
