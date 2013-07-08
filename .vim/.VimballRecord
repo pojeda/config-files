@@ -1,0 +1,2 @@
+Align.vba: call delete('/home/pedro/.vim/plugin/AlignPlugin.vim')|call delete('/home/pedro/.vim/plugin/AlignMapsPlugin.vim')|call delete('/home/pedro/.vim/plugin/cecutil.vim')|call delete('/home/pedro/.vim/doc/Align.txt')|call delete('/home/pedro/.vim/autoload/Align.vim')|call delete('/home/pedro/.vim/autoload/AlignMaps.vim')
+DrawIt.vba: call delete('/home/pedro/.vim/plugin/DrawItPlugin.vim')|call delete('/home/pedro/.vim/plugin/cecutil.vim')|call delete('/home/pedro/.vim/autoload/DrawIt.vim')|call delete('/home/pedro/.vim/doc/DrawIt.txt')
