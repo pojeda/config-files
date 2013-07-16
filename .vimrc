@@ -11,9 +11,14 @@ set title
 
 set background=dark
 
-" syntax
+"for pathogen plugin
+execute pathogen#infect()
 syntax on
-filetype on
+filetype plugin indent on
+
+" syntax
+"syntax on
+"filetype on
 "filetype plugin on
 "filetype indent on
 
@@ -26,13 +31,6 @@ colorscheme koehler
 "Upper/Lower case are the same
 set ignorecase
 
-"Show line numbers
-set number
-set cursorline
-set cursorcolumn
-highlight CursorLine guibg=lightblue ctermbg=brown
-highlight CursorColumn guibg=lightblue ctermbg=brown
-
 "format with the par external program
 set formatprg=par\ -w70j
 
@@ -43,7 +41,7 @@ set hlsearch
 set incsearch
 
 " Show the mode
-set showmode
+"set showmode
 
 set laststatus=2
 
@@ -86,7 +84,7 @@ set ruler
 
 " status line
 "set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\[ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\[ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 "display name of file
 set modeline
@@ -109,7 +107,7 @@ au BufRead,BufNewFile *.inp,*.str set filetype=charmm
 set pastetoggle=<F12>
 
 " map keys
-imap jj <Esc>
+"imap jj <Esc>
 
 " formatting
 map Q gq
@@ -187,7 +185,7 @@ set wildmode=longest,list
 set shortmess+=I
 
 "If you want to keep the cursor in place when you join lines with
-nnoremap J mzJ`z
+"nnoremap J mzJ`z
 
 "control the position of the new splits
 set splitbelow
@@ -215,4 +213,32 @@ if &diff
     autocmd BufWritePost * diffupdate
   augroup END
 endif
+"Show line numbers
+set number
+set cursorline
+set cursorcolumn
+highlight CursorLine guibg=lightblue ctermbg=blue
+highlight CursorColumn guibg=lightblue ctermbg=blue
 
+"load a different color scheme when using vimdiff
+"if &diff
+"    colorscheme elflord
+"endif
+
+"remember folds
+autocmd BufWinLeave *.* mkview!
+autocmd BufWinEnter *.* silent loadview
+
+"Absolute numbers when using insert mode
+autocmd FocusLost * :set number
+autocmd InsertEnter * :set number
+"Relative numbers when leaving insert mode
+autocmd InsertLeave * :set relativenumber
+autocmd CursorMoved * :set relativenumber
+
+"abbreviation for stop command in fortran
+ab stp stop 'pedro ojeda'
+ab wrt write(6,*) 'p. ojeda'
+
+"map the leader to colon
+let mapleader = ","
