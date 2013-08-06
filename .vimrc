@@ -12,7 +12,7 @@ set title
 set background=dark
 
 "for pathogen plugin
-execute pathogen#infect()
+call pathogen#infect()
 syntax on
 filetype plugin indent on
 
@@ -109,13 +109,21 @@ set pastetoggle=<F12>
 " map keys
 "imap jj <Esc>
 
-" formatting
-map Q gq
+" formatting a paragraph
+map Q gqip
   
 " map colon to semicolon
 map ; :
 
+" map for visual block
 map vv <C-V>
+
+" map for repeat command put it in the beginning of the change
+map . .`[
+
+" map for inserting new lines
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
 
 " map sav to save the file in insert mode
 imap <F10> <Esc>:w<CR><Esc>
@@ -149,7 +157,7 @@ set t_Co=256
 
 "to search with space instead of slash
 map <space> /
-map <c-space> ?
+map <C-space> ?
 
 "Recompile a tex file with pdflatex
 command! Reload :! (pdflatex % &>/dev/null) &
@@ -170,6 +178,7 @@ set wm=0
 "set spell
 "Use the the z= command to find alternate spellings underneath your cursor.
 set spelllang=en_us
+"set spelllang=es
 set spell
 
 "Keep 5 lines below and above the cursor 
@@ -191,8 +200,11 @@ set shortmess+=I
 set splitbelow
 set splitright
 
+"map the leader to colon
+let mapleader = ","
+
 "auto source the .vimrc whenever it is modified
-if has("autocmd!")
+if has('autocmd')
  autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
@@ -230,15 +242,14 @@ autocmd BufWinLeave *.* mkview!
 autocmd BufWinEnter *.* silent loadview
 
 "Absolute numbers when using insert mode
-autocmd FocusLost * :set number
-autocmd InsertEnter * :set number
+"autocmd FocusLost * :set number
+"autocmd InsertEnter * :set number
 "Relative numbers when leaving insert mode
-autocmd InsertLeave * :set relativenumber
-autocmd CursorMoved * :set relativenumber
+"autocmd InsertLeave * :set relativenumber
+"autocmd CursorMoved * :set relativenumber
 
 "abbreviation for stop command in fortran
 ab stp stop 'pedro ojeda'
 ab wrt write(6,*) 'p. ojeda'
 
-"map the leader to colon
-let mapleader = ","
+
