@@ -225,7 +225,7 @@ endfunction
 "delete blank spaces at the end of the line
 if has('autocmd')
  autocmd bufwritepost .vimrc source $MYVIMRC
- autocmd BufWritePre *.vimrc,*.sh,*.f90,*.dat :call <SID>StripTrailingWhitespaces()
+ autocmd BufWritePre *.vimrc,*.sh,*.awk,*.f90,*.dat :call <SID>StripTrailingWhitespaces()
 endif
 
 "This part adds a header to a fortran file when it is created
