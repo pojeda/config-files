@@ -32,30 +32,30 @@ setlocal conceallevel=0
 setlocal completefunc=
 setlocal copyindent
 setlocal cryptmethod=
-setlocal cursorbind
+setlocal nocursorbind
 setlocal cursorcolumn
 setlocal cursorline
 setlocal define=
 setlocal dictionary=
-setlocal diff
+setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
 if &filetype != 'vim'
 setlocal filetype=vim
 endif
-setlocal foldcolumn=2
-setlocal foldenable
+setlocal foldcolumn=0
+setlocal nofoldenable
 setlocal foldexpr=0
 setlocal foldignore=#
 setlocal foldlevel=0
 setlocal foldmarker={{{,}}}
-setlocal foldmethod=diff
+setlocal foldmethod=marker
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tcq
+setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal grepprg=
 setlocal iminsert=0
@@ -65,7 +65,7 @@ setlocal includeexpr=
 setlocal indentexpr=GetVimIndent()
 setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,=end,=else,=cat,=fina,=END,0\\
 setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
+setlocal iskeyword=@,48-57,_,192-255,#
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
@@ -86,7 +86,7 @@ setlocal noreadonly
 setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
-setlocal scrollbind
+setlocal noscrollbind
 setlocal shiftwidth=8
 setlocal noshortname
 setlocal nosmartindent
@@ -102,14 +102,14 @@ setlocal synmaxcol=3000
 if &syntax != 'vim'
 setlocal syntax=vim
 endif
-setlocal tabstop=8
+setlocal tabstop=4
 setlocal tags=
 setlocal textwidth=70
 setlocal thesaurus=
 setlocal noundofile
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal nowrap
+setlocal wrap
 setlocal wrapmargin=0
 let s:l = 1 - ((0 * winheight(0) + 31) / 62)
 if s:l < 1 | let s:l = 1 | endif

@@ -2,7 +2,7 @@
 set nocompatible
 
 " no bell
-" set visualbell 
+" set visualbell
 
 set title
 
@@ -12,6 +12,7 @@ set title
 set background=dark
 
 "for pathogen plugin
+"execute pathogen#infect()
 call pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -100,18 +101,22 @@ set ls=2
 
 "Number of characters in one column
 "set columns=100
-au BufRead,BufNewFile *.src,*.fcm set filetype=fortran
+
+au BufRead,BufNewFile *.src,*.fcm,*.f90 set filetype=fortran
 au BufRead,BufNewFile *.inp,*.str set filetype=charmm
 
 " sane indentation
 set pastetoggle=<F12>
 
-" map keys
-"imap jj <Esc>
+" go 20 lines below the current line
+"map jj 20j
+
+" go 20 lines below the current line
+"map kk 20k
 
 " formatting a paragraph
 map Q gqip
-  
+
 " map colon to semicolon
 map ; :
 
@@ -131,7 +136,7 @@ imap <F10> <Esc>:w<CR><Esc>
 
 " use dictionary for word completion
 set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
-set complete-=k complete+=k 
+set complete-=k complete+=k
 
 " Easy window navigation
 map <C-h> <C-w>h
@@ -169,10 +174,10 @@ command! Open   :! (file="%"; pdflatex "$file" $>/dev/null && zathura "${file/.t
 set tw=70
 set wm=0
 
-""set linebreak ""set fo+=t ""set ai 
+""set linebreak ""set fo+=t ""set ai
 
 "autoformat the text useful for latex but annoying for any other
-"things 
+"things
 "set fo=at
 
 "set spell
@@ -181,10 +186,10 @@ set spelllang=en_us
 "set spelllang=es
 set spell
 
-"Keep 5 lines below and above the cursor 
+"Keep cursor in the middle of the screen
 set scrolloff=9999
 
-"to enable backspace 
+"to enable backspace
 set backspace=indent,eol,start
 
 "autocomplete the name of files
@@ -203,9 +208,24 @@ set splitright
 "map the leader to colon
 let mapleader = ","
 
-"auto source the .vimrc whenever it is modified
+"this function deletes blank spaces at the end of the file
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+"auto source the .vimrc whenever it is modified and
+"delete blank spaces at the end of the line
 if has('autocmd')
  autocmd bufwritepost .vimrc source $MYVIMRC
+ autocmd BufWritePre *.vimrc,*.sh,*.f90,*.dat :call <SID>StripTrailingWhitespaces()
 endif
 
 "This part adds a header to a fortran file when it is created
@@ -252,4 +272,8 @@ autocmd BufWinEnter *.* silent loadview
 ab stp stop 'pedro ojeda'
 ab wrt write(6,*) 'p. ojeda'
 
+"hide some errors
+set hidden
 
+"replace highlighted text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
