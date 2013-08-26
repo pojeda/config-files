@@ -83,7 +83,7 @@ setlocal spell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en_us
-setlocal statusline=%#Al9#\ %{g:airline_current_mode_text}\ %#Al9#%#Al9#>%#Al9#\ %{g:airline_externals_fugitive}\ %#Al9#>\ elsarticle-template-num.bib%#warningmsg#%#Al9#%<%=%#Al9#%{&ro\ ?\ g:airline_readonly_symbol\ :\ ''}%#Al9#\ %{strlen(&filetype)>0?&filetype:''}\ %#Al9#<%#Al9#\ %{strlen(&fenc)>0?&fenc:''}%{strlen(&ff)>0?'['.&ff.']':''}\ %#Al9#<%#Al9#\ %3p%%\ :%3l:%3c\ 
+setlocal statusline=%#Al2#%{airline#update_highlight()}\ %{g:airline_current_mode_text}\ %{&paste\ ?\ g:airline_paste_symbol.\"\ \"\ :\ \"\"}%#Al3#>%#Al4#\ %{g:airline_externals_fugitive}\ %#Al5#>%#Al6#\ %f%m\ %#warningmsg#%#Al6#%<%=%#Al7#%{&ro\ ?\ g:airline_readonly_symbol\ :\ ''}%#Al6#\ %{strlen(&filetype)>0?&filetype:''}\ %#Al5#<%#Al4#\ %{strlen(&fenc)>0?&fenc:''}%{strlen(&ff)>0?'['.&ff.']':''}\ %#Al3#<%#Al2#\ %3p%%\ :%3l:%3c\ 
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
@@ -100,12 +100,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 540 - ((12 * winheight(0) + 14) / 28)
+let s:l = 1 - ((0 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-540
-normal! 0
+1
+normal! 010|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

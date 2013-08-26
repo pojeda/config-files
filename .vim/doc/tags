@@ -1,5 +1,11 @@
 Align-copyright	Align.txt	/*Align-copyright*
 DrawIt.txt	DrawIt.txt	/*DrawIt.txt*
+RltvNmbr	RltvNmbr.txt	/*RltvNmbr*
+RltvNmbr-contents	RltvNmbr.txt	/*RltvNmbr-contents*
+RltvNmbr-copyright	RltvNmbr.txt	/*RltvNmbr-copyright*
+RltvNmbr-history	RltvNmbr.txt	/*RltvNmbr-history*
+RltvNmbr-manual	RltvNmbr.txt	/*RltvNmbr-manual*
+RltvNmbr.txt	RltvNmbr.txt	/*RltvNmbr.txt*
 align	Align.txt	/*align*
 align-align	Align.txt	/*align-align*
 align-codepoint	Align.txt	/*align-codepoint*

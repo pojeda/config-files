@@ -12,8 +12,8 @@ setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=sO:%\ -,mO:%\ \ ,eO:%%,:%
-setlocal commentstring=%%s
+setlocal comments=s1:/*,mb:*,ex:*/,:%
+setlocal commentstring=%\ %s
 setlocal complete=.,w,b,u,t,i,k
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -23,14 +23,14 @@ setlocal cryptmethod=
 setlocal nocursorbind
 setlocal cursorcolumn
 setlocal cursorline
-setlocal define=\\\\\\([egx]\\|char\\|mathchar\\|count\\|dimen\\|muskip\\|skip\\|toks\\)\\=def\\|\\\\font\\|\\\\\\(future\\)\\=let\\|\\\\new\\(count\\|dimen\\|skip\\|muskip\\|box\\|toks\\|read\\|write\\|fam\\|insert\\)\\|\\\\\\(re\\)\\=new\\(boolean\\|command\\|counter\\|environment\\|font\\|if\\|length\\|savebox\\|theorem\\(style\\)\\=\\)\\s*\\*\\=\\s*{\\=\\|DeclareMathOperator\\s*{\\=\\s*
+setlocal define=
 setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'tex'
-setlocal filetype=tex
+if &filetype != 'prolog'
+setlocal filetype=prolog
 endif
 setlocal foldcolumn=0
 setlocal nofoldenable
@@ -43,17 +43,17 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tcq
+setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=0
-setlocal include=\\\\input\\|\\\\include{
-setlocal includeexpr=substitute(v:fname,\ '^.\\{-}{\\|}.*',\ '',\ 'g')
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetPrologIndent()
+setlocal indentkeys=0{,0},!^F,o,O,e,0%,-,0;,>,0)
 setlocal noinfercase
-setlocal iskeyword=@,48-57,192-255
+setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
@@ -84,11 +84,11 @@ setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en_us
 setlocal statusline=%#Al2#%{airline#update_highlight()}\ %{g:airline_current_mode_text}\ %{&paste\ ?\ g:airline_paste_symbol.\"\ \"\ :\ \"\"}%#Al3#>%#Al4#\ %{g:airline_externals_fugitive}\ %#Al5#>%#Al6#\ %f%m\ %#warningmsg#%#Al6#%<%=%#Al7#%{&ro\ ?\ g:airline_readonly_symbol\ :\ ''}%#Al6#\ %{strlen(&filetype)>0?&filetype:''}\ %#Al5#<%#Al4#\ %{strlen(&fenc)>0?&fenc:''}%{strlen(&ff)>0?'['.&ff.']':''}\ %#Al3#<%#Al2#\ %3p%%\ :%3l:%3c\ 
-setlocal suffixesadd=.tex
+setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'tex'
-setlocal syntax=tex
+if &syntax != 'prolog'
+setlocal syntax=prolog
 endif
 setlocal tabstop=8
 setlocal tags=
@@ -100,12 +100,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 674 - ((57 * winheight(0) + 31) / 62)
+let s:l = 1 - ((0 * winheight(0) + 31) / 62)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-674
-normal! 023|
+1
+normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

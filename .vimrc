@@ -277,3 +277,20 @@ set hidden
 
 "replace highlighted text
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+"for the multiple cursors plugin
+let g:multi_cursor_exit_from_visual_mode=1
+let g:multi_cursor_exit_from_insert_mode=1
+" Default highlighting (see help :highlight and help :highlight-link)
+highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+highlight link multiple_cursors_visual Visual
+
+"show both relative and absolute line numbers
+call RltvNmbr#RltvNmbrCtrl(1)
+
+"for the gundo tree
+"git clone http://github.com/sjl/gundo.vim.git ~/.vim/bundle/gundo
+nnoremap <F5> :GundoToggle<CR>
+let g:gundo_width = 60
+let g:gundo_preview_height = 40
+let g:gundo_right = 1
